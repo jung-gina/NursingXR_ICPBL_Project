@@ -10,6 +10,8 @@ NursingXR 의 ICPBL 산학과제 프로젝트
    - 이미지와 같이, Plugin 이 보인다면 반영 된 것.
 
 2. Model Configurator
+
+   
    ![image](https://github.com/user-attachments/assets/e25a5e9d-992a-4f4f-aa98-ad4c4a3d8ce3)
   - 사용하기 전 OPEN AI의 API Key 와 model 설정을 하고 Save Configuration Click 
    ※ 유효한 API Key를 사용해야 원활한 이용이 가능! 
