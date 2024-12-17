@@ -3,17 +3,19 @@ using System.Collections;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEditor;
 
 public class OpenAICommentClient : MonoBehaviour
 {
 
     private string apiUrl = "https://api.openai.com/v1/chat/completions";
-    private string apiKey = "";
+    //private string apiKey = "";
+
+    private static string assetPath = "Assets/Plugins/Settings/LLMSettings.asset";
     private LLMSettings settings;
-    private void Awake()
+    private void InitializeSettings()
     {
-        settings = Resources.Load<LLMSettings>("LLMSettings");
+        settings = AssetDatabase.LoadAssetAtPath<LLMSettings>(assetPath);
         if (settings == null)
         {
             Debug.LogError("LLMSettings asset not found. Please configure it in LLM Tools > Model Configurator.");
@@ -52,16 +54,39 @@ public class OpenAICommentClient : MonoBehaviour
     public IEnumerator SendRequest(string userPrompt, Action<string> callback)
     {
 
+        InitializeSettings();
+        if (settings == null)
+        {
+            Debug.LogError("Settings is null! Make sure LLMSettings.asset exists and is loaded properly.");
+            yield break;
+        }
+
+        if (string.IsNullOrEmpty(settings.apiKey))
+        {
+            Debug.LogError("API Key is missing! Configure it in the LLMSettings asset.");
+            yield break;
+        }
+
+        if (string.IsNullOrEmpty(userPrompt))
+        {
+            Debug.LogError("User prompt is null or empty!");
+            yield break;
+        }
+
+        string apiKey = settings.apiKey; // Asset에서 API Key 가져오기
+        string model = settings.selectedModel; // Asset에서 모델 정보 가져오기
+
         
         // System 프롬프트: 주석을 추가하도록 작업 명시
         string systemPrompt = "You are an assistant that adds comments to existing C# code. "
                             + "Your job is to add clear and useful comments to the code without modifying the original structure. "
                             + "Return the updated code with only the comments added.";
 
+
         // 요청 데이터 구성
         RequestData requestData = new RequestData
         {
-            model = "gpt-4o", // OpenAI 모델 설정
+            model = model, // OpenAI 모델 설정
             messages = new[]
             {
                 new Message { role = "system", content = systemPrompt },

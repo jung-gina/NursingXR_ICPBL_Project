@@ -32,6 +32,8 @@ public class LLMCommentGenerator : EditorWindow
         }
     }
 
+    
+
     private void OnGUI()
     {
         GUILayout.Label("Comment Generator", EditorStyles.boldLabel);
@@ -53,6 +55,8 @@ public class LLMCommentGenerator : EditorWindow
         // 주석 생성 버튼
         if (GUILayout.Button("Generate Comments"))
         {
+
+            generatedCommentedCode = "Requesting...";
             if (!string.IsNullOrEmpty(selectedFilePath))
             {
                 string fileContent = File.ReadAllText(selectedFilePath);
@@ -87,7 +91,7 @@ public class LLMCommentGenerator : EditorWindow
 
     private void OnAPISuccess(string commentedCode)
     {
-        generatedCommentedCode = commentedCode;
+        generatedCommentedCode = ExtractPureCSharpCode(commentedCode);
         Debug.Log("Comments generated successfully!");
     }
 
@@ -122,5 +126,28 @@ public class LLMCommentGenerator : EditorWindow
         {
             Debug.LogWarning("No file selected or generated code is empty!");
         }
+    }
+
+    private string ExtractPureCSharpCode(string rawCode)
+    {
+        // 백틱과 "csharp" 언어 태그 제거
+        if (string.IsNullOrEmpty(rawCode))
+            return "";
+
+        string result = rawCode;
+
+        // 백틱과 언어 태그가 있는 경우 제거
+        if (result.StartsWith("```"))
+        {
+            int start = result.IndexOf('\n') + 1; // 첫 번째 줄 스킵
+            int end = result.LastIndexOf("```");
+
+            if (start >= 0 && end > start)
+            {
+                result = result.Substring(start, end - start).Trim();
+            }
+        }
+
+        return result;
     }
 }
