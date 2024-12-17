@@ -9,11 +9,13 @@ NursingXR 의 ICPBL 산학과제 프로젝트
    ![image](https://github.com/user-attachments/assets/52ad3d49-1af8-488d-bbb1-7269e7cae421)
    - 이미지와 같이, Plugin 이 보인다면 반영 된 것.
 
+
 2. Model Configurator
 
    
    ![image](https://github.com/user-attachments/assets/e25a5e9d-992a-4f4f-aa98-ad4c4a3d8ce3)
   - 사용하기 전 OPEN AI의 API Key 와 model 설정을 하고 Save Configuration Click 
+
    ※ 유효한 API Key를 사용해야 원활한 이용이 가능! 
 
 3. Code Generate
@@ -21,6 +23,7 @@ NursingXR 의 ICPBL 산학과제 프로젝트
    - User Prompt를 입력 하고 Code Generate 를 Click 하면, 사전 작성된 Code Generate 용  System Prompt 를 통해서 LLM API 통신
    - Requesting... 이 보이면 API 통신을 잠시 기다리기
    - LLM 응답에서 text 와 C# 코드를 분리하여 GUI 반영 및 C# 코드에 대해서는 /Generated Scripts 폴더에 추후 이용할 수 있도록 저장
+
 
 4. Comment Generate
   ![image](https://github.com/user-attachments/assets/a8591d0f-c63b-4dda-b878-8998fd33c129)
