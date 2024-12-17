@@ -4,6 +4,12 @@
 NursingXR 의 ICPBL 산학과제 프로젝트
 
 ------------------------------------------------------------------
+**Architecture**
+
+![image](https://github.com/user-attachments/assets/8b9b0c08-0129-4691-96c7-87e2243e551e)
+
+
+------------------------------------------------------------------
 **How to Use**
 1. LLM Tools 를 Unity Editor 내 반영하여 준비
    ![image](https://github.com/user-attachments/assets/52ad3d49-1af8-488d-bbb1-7269e7cae421)
@@ -36,10 +42,14 @@ NursingXR 의 ICPBL 산학과제 프로젝트
 
 ------------------------------------------------------------------
 **기대 효과 및 성과**
-![image](https://github.com/user-attachments/assets/33007ee0-1a37-432e-95d4-28f96c8773f6)
+
+![image](https://github.com/user-attachments/assets/28423095-88d6-42c6-8bd3-9763cfff7d08)
+
 
 
 ------------------------------------------------------------------
 컴퓨터소프트웨어 학과(미래자동차 SW 융합전공) 
+
 SELab 석사 1기 정지나
+
 email : snowgina00@hanyang.ac.kr
